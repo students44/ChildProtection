@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Puzzle - Fuzzle Mode</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Back Button -->
+    <a href="/games" class="back-button">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Games
+    </a>
+
+    <!-- Game Container -->
+    <div class="game-wrapper">
+        <div class="game-header">
+            <div class="header-content">
+                <h1>AI PUZZLE <span class="fuzzle-badge hidden">FUZZLE MODE</span></h1>
+                <p id="level-theme">Select a theme to begin...</p>
+            </div>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <span class="stat-label">LEVEL</span>
+                    <span class="stat-value" id="level-display">1</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">MOVES</span>
+                    <span class="stat-value" id="moves-display">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+            <!-- Hint Overlay -->
+            <div id="hint-overlay" class="overlay-message hidden">
+                <div class="hint-content">
+                    <h3>💡 Designer Hint</h3>
+                    <p id="hint-text">Try pushing the block to the left...</p>
+                    <button class="btn-primary" onclick="hideHint()">Got it</button>
+                </div>
+            </div>
+
+            <!-- Win Overlay -->
+            <div id="win-overlay" class="overlay-message hidden">
+                <div class="win-content">
+                    <h2>LEVEL COMPLETE!</h2>
+                    <p id="win-message">Elegant solution.</p>
+                    <button class="btn-primary" id="next-level-btn">Next Level</button>
+                </div>
+            </div>
+
+            <!-- Loading Overlay -->
+            <div id="loading-overlay" class="overlay-message hidden">
+                <div class="loader"></div>
+                <p class="loading-text">AI is designing your puzzle...</p>
+                <p class="loading-subtext" id="loading-subtext">Generating logic gates...</p>
+            </div>
+        </div>
+
+        <div class="controls-hint">
+            <span>Arrow Keys to Move</span> • <span>R to Restart</span> • <span>H for Hint</span>
+        </div>
+    </div>
+
+    <!-- Theme Selection Modal -->
+    <div id="theme-modal" class="modal active">
+        <div class="modal-content">
+            <h2>Design Your Experience</h2>
+            <p>Choose a theme for the AI to generate your next puzzle.</p>
+
+            <div class="mode-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="fuzzle-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span class="mode-label">Enable <strong>FUZZLE MODE</strong> (Dynamic Rules)</span>
+            </div>
+
+            <div class="theme-grid">
+                <!-- Themes will be injected here -->
+            </div>
+
+            <div class="custom-theme">
+                <input type="text" id="custom-theme-input" placeholder="Or type your own theme...">
+                <button id="start-custom-btn" class="btn-secondary">Generate</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="game.js"></script>
+</body>
+
+</html>
